@@ -1,0 +1,22 @@
+Schabowy
+10
+5
+2.5
+Glowne
+miensne
+Polska
+3
+typowy obiadowy schabowy
+wsadzic do panierki i smazyc na patelni
+mieso
+200
+3.5
+g
+jajka
+1
+3.5
+szt
+maka
+100
+3.5
+g

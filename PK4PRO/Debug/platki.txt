@@ -1,0 +1,18 @@
+platki
+5
+3
+5
+szybkie
+platki
+swiat
+2
+mleko z platkami albo platki z mlekiem
+mleko zalewamy platkami albo na odwrot
+mleko
+500
+3
+ml
+platki
+500
+2
+g

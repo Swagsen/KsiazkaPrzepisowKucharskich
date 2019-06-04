@@ -1,0 +1,26 @@
+Zupa Pomidorowa
+10
+5
+2.5
+Zupa
+vege
+Polska
+4
+zupa z pomirodow chyba kazdy zna 
+rosó³ z niedzieli dodajemy pomidory i reszte skladnikow
+pomidory
+3
+3.5
+szt
+rosol
+1000
+0.99
+ml
+cebula
+500
+13.78
+g
+woda
+1000
+0
+ml

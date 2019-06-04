@@ -1,0 +1,16 @@
+﻿  FileManager.cpp
+  Ingredient.cpp
+  Main.cpp
+c:\users\mihau\desktop\pk4pro\pk4pro\menumanager.h(20): warning C4091: "static ": zignorowano na lewo od "MenuManager::State" podczas gdy brak deklaracji zmiennej
+  MenuManager.cpp
+c:\users\mihau\desktop\pk4pro\pk4pro\menumanager.h(20): warning C4091: "static ": zignorowano na lewo od "MenuManager::State" podczas gdy brak deklaracji zmiennej
+  Recipe.cpp
+  RecipeManager.cpp
+c:\users\mihau\desktop\pk4pro\pk4pro\recipemanager.cpp(50): warning C4551: wywołaniu funkcji brakuje listy argumentów
+  Validator.cpp
+c:\users\mihau\desktop\pk4pro\pk4pro\validator.h(8): warning C4091: "static ": zignorowano na lewo od "Validator" podczas gdy brak deklaracji zmiennej
+  Trwa generowanie kodu
+c:\users\mihau\desktop\pk4pro\pk4pro\recipemanager.cpp(52): warning C4715: "RecipeManager::SearchByName”: niewszystkie ścieżki kodu zwracają wartość
+  All 484 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Zakończono generowanie kodu
+  PK4PRO.vcxproj -> C:\Users\Mihau\Desktop\PK4PRO\Release\PK4PRO.exe

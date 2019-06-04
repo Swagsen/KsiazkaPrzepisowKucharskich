@@ -1,11 +1,21 @@
 #include "ELodowka.h"
 #include<algorithm>
+#include"MyException.h"
 
 
 
 ELodowka::ELodowka()
 {
-	ingriedientList = fileManager.WczytajElodowke();
+	try 
+	{
+		ingriedientList = fileManager.WczytajElodowke();
+	}
+	catch (NoFileI e)
+	{
+		std::cout << e.what();
+		system("PAUSE");
+		exit(-1);
+	}
 }
 
 
@@ -76,13 +86,31 @@ void ELodowka::SearchRecipes(std::vector<Recipe> recipeList)
 void ELodowka::AddIngredient(Ingredient ingredient)
 {
 	ingriedientList.push_back(ingredient);
-	fileManager.ZapiszElodowke(ingriedientList);
+	try
+	{
+		fileManager.ZapiszElodowke(ingriedientList);
+	}
+	catch (NoFileO e)
+	{
+		std::cout << e.what();
+		system("PAUSE");
+		exit(-1);
+	}
 }
 
 void ELodowka::DeleteIngredient(std::string name)
 {
 	ingriedientList.erase(std::find_if(ingriedientList.begin(), ingriedientList.end(), [&name](Ingredient& ing) {return ing.GetNazwa() == name; }));
-	fileManager.ZapiszElodowke(ingriedientList);
+	try
+	{
+		fileManager.ZapiszElodowke(ingriedientList);
+	}
+	catch (NoFileO e)
+	{
+		std::cout << e.what();
+		system("PAUSE");
+		exit(-1);
+	}
 }
 
 void ELodowka::MakeRecipe(std::string name)

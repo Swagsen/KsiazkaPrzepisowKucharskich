@@ -1,2 +1,5 @@
-﻿  ELodowka.cpp
-  PK4PRO.vcxproj -> C:\Users\Mihau\Desktop\PK4PRO\Debug\PK4PRO.exe
+﻿  FileManager.cpp
+c:\users\mihau\desktop\pk4pro\ksiazkaprzepisowkucharskich\pk4pro\filemanager.cpp(105): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\mihau\desktop\pk4pro\ksiazkaprzepisowkucharskich\pk4pro\filemanager.cpp(137): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\mihau\desktop\pk4pro\ksiazkaprzepisowkucharskich\pk4pro\filemanager.cpp(194): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  PK4PRO.vcxproj -> C:\Users\Mihau\Desktop\PK4PRO\KsiazkaPrzepisowKucharskich\Debug\PK4PRO.exe

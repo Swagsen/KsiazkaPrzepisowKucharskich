@@ -16,7 +16,16 @@ std::string input()
 
 MenuManager::MenuManager()
 {
-	recipeManager.recipeList = fileManager.WczytajWszsytkiePrzepisy();
+	try
+	{
+		recipeManager.recipeList = fileManager.WczytajWszsytkiePrzepisy();
+	}
+	catch (NoFileI e)
+	{
+		std::cout << e.what();
+		system("PAUSE");
+		exit(-1);
+	}
 }
 
 
@@ -73,13 +82,31 @@ bool MenuManager::Update()
 	case dodaj:
 		system("cls");
 		AddRecipe();
-		fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+		try
+		{
+			fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+		}
+		catch (NoFileO e)
+		{
+			std::cout << e.what();
+			system("PAUSE");
+			exit(-1);
+		}
 		break;
 
 	case usun:
 		system("cls");
 		DeleteRecipe();
-		fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+		try
+		{
+			fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+		}
+		catch (NoFileO e)
+		{
+			std::cout << e.what();
+			system("PAUSE");
+			exit(-1);
+		}
 		break;
 
 	case szukaj:
@@ -93,7 +120,16 @@ bool MenuManager::Update()
 			break;
 
 	case wyjdz:
-		fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+		try
+		{
+			fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+		}
+		catch (NoFileO e)
+		{
+			std::cout << e.what();
+			system("PAUSE");
+			exit(-1);
+		}
 		return false;
 		break;
 	}

@@ -10,3 +10,21 @@ public:
 	}
 };
 
+
+class NoFileI : public std::exception
+{
+public:
+	virtual const char* what() const throw()
+	{
+		return "Problem z otwarciem pliku \n";
+	}
+};
+
+class NoFileO : public std::exception
+{
+public:
+	virtual const char* what() const throw()
+	{
+		return "Problem z zapisem pliku \n";
+	}
+};

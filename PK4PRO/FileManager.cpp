@@ -1,5 +1,6 @@
 #include "FileManager.h"
 #include<fstream>
+#include"MyException.h"
 
 
 
@@ -14,20 +15,13 @@ FileManager::~FileManager()
 std::vector<Recipe> FileManager::WczytajWszsytkiePrzepisy()
 {
 	std::ifstream plNazwy;
+	plNazwy.open("NazwyPrzepisow.txt");
 
-	try
-	{
-		plNazwy.open("NazwyPrzepisow.txt");
-	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "B³¹d Wczytania pliku";
-		system("pause");
-		exit(-1);
-	}
+	if (plNazwy.bad())
+		throw NoFileI();
 
-
-
+	if (plNazwy.fail())
+		throw NoFileI();
 
 	std::string nazwa;
 	std::vector<Recipe> tmp;
@@ -35,6 +29,9 @@ std::vector<Recipe> FileManager::WczytajWszsytkiePrzepisy()
 	while (!plNazwy.eof())
 	{
 		std::getline(plNazwy, nazwa);
+		if (nazwa == "")
+			throw NoFileI();
+
 		tmp.push_back(WczytajPrzepis(nazwa));
 	}
 
@@ -46,17 +43,10 @@ std::vector<Recipe> FileManager::WczytajWszsytkiePrzepisy()
 Recipe FileManager::WczytajPrzepis(std::string name)
 {
 	std::ifstream plo;
+	plo.open(name + ".txt");
 
-	try
-	{
-		plo.open(name + ".txt");
-	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "B³¹d Wczytania pliku";
-		system("pause");
-		exit(-1);
-	}
+	if (plo.fail())
+		throw NoFileI();
 
 	std::string nazwa;
 	float czasPrzygotowania;
@@ -100,14 +90,16 @@ Recipe FileManager::WczytajPrzepis(std::string name)
 
 	plo.close();
 	return recipe;
-	
+
 }
 
 void FileManager::ZapiszWszsytkiePrzepisy(std::vector<Recipe> recipeList)
 {
 	std::ofstream plNazwy;
-	plNazwy.open("NazwyPrzepisow1.txt");
-	if (!plNazwy.good()) return;
+	plNazwy.open("NazwyPrzepisow.txt");
+
+	if (plNazwy.bad())
+		throw NoFileO();
 
 
 	for (int i = 0; i < recipeList.size(); i++)
@@ -126,20 +118,11 @@ void FileManager::ZapiszWszsytkiePrzepisy(std::vector<Recipe> recipeList)
 void FileManager::ZapiszPrzepis(Recipe recipe)
 {
 	std::ofstream plo;
+	plo.open(recipe.GetNazwa() + ".txt");
 
-	plo.open(recipe.GetNazwa() + "1.txt");
+	if (plo.bad())
+		throw NoFileO();
 
-	try 
-	{
-		plo.open(recipe.GetNazwa() + "1.txt");
-	}
-	catch (std::ifstream::failure e) 
-	{
-		std::cout << "B³¹d Zapisu pliku";
-		system("pause");
-		exit(-1);
-	}
-	   	  
 	plo << recipe.GetNazwa() << std::endl;
 	plo << recipe.GetCzasPrzygotowania() << std::endl;
 	plo << recipe.GetOcena() << std::endl;
@@ -164,18 +147,14 @@ void FileManager::ZapiszPrzepis(Recipe recipe)
 std::vector<Ingredient> FileManager::WczytajElodowke()
 {
 	std::ifstream pli;
+	pli.open("skladnikiWlodowce.txt");
 
-	try
-	{
-		pli.open("skladnikiWlodowce.txt");
-	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "B³¹d Wczytania pliku";
-		system("pause");
-		exit(-1);
-	}
+	if (pli.bad())
+		throw NoFileI();
 
+	if (pli.fail())
+		throw NoFileI();
+	
 	std::string nazwa;
 	float ilosc;
 	float cena;
@@ -205,17 +184,10 @@ std::vector<Ingredient> FileManager::WczytajElodowke()
 void FileManager::ZapiszElodowke(std::vector<Ingredient> ingredientList)
 {
 	std::ofstream plo;
+	plo.open("skladnikiWlodowce.txt");
 
-	try
-	{
-		plo.open("skladnikiWlodowce1.txt");
-	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "B³¹d Zapisu pliku";
-		system("pause");
-		exit(-1);
-	}
+	if (plo.bad())
+		throw NoFileO();
 
 	plo << ingredientList.size() << std::endl;
 
@@ -223,7 +195,7 @@ void FileManager::ZapiszElodowke(std::vector<Ingredient> ingredientList)
 	{
 		plo << ingredientList[i].GetNazwa() << std::endl;
 		plo << ingredientList[i].GetIlosc() << std::endl;
-		plo << ingredientList[i].GetCena() << std::endl;      
+		plo << ingredientList[i].GetCena() << std::endl;
 		plo << ingredientList[i].GetJednostka() << std::endl;
 	}
 	plo.close();

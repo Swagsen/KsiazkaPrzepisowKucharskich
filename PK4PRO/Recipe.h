@@ -27,8 +27,8 @@ public:
 	Recipe();
 	~Recipe();
 
-	void DodajSkladnik(std::string _nazwa, float _ilosc, float _cena, std::string _jednostka);
-	void DodajSkladnik(Ingredient ingredient);
+	void AddIngredient(std::string _nazwa, float _ilosc, float _cena, std::string _jednostka);
+	void AddIngredient(Ingredient ingredient);
 	//void Wyswietl();
 	//bool operator==(Recipe& recipe);
 

@@ -12,7 +12,7 @@ FileManager::~FileManager()
 {
 }
 
-std::vector<Recipe> FileManager::WczytajWszsytkiePrzepisy()
+std::vector<Recipe> FileManager::LoadAllRecipes()
 {
 	std::ifstream plNazwy;
 	plNazwy.open("NazwyPrzepisow.txt");
@@ -32,7 +32,7 @@ std::vector<Recipe> FileManager::WczytajWszsytkiePrzepisy()
 		if (nazwa == "")
 			throw NoFileI();
 
-		tmp.push_back(WczytajPrzepis(nazwa));
+		tmp.push_back(LoadRecipe(nazwa));
 	}
 
 
@@ -40,7 +40,7 @@ std::vector<Recipe> FileManager::WczytajWszsytkiePrzepisy()
 	return tmp;
 }
 
-Recipe FileManager::WczytajPrzepis(std::string name)
+Recipe FileManager::LoadRecipe(std::string name)
 {
 	std::ifstream plo;
 	plo.open(name + ".txt");
@@ -84,7 +84,7 @@ Recipe FileManager::WczytajPrzepis(std::string name)
 		plo >> ilosc;
 		plo >> cena;
 		plo >> jednostka;
-		recipe.DodajSkladnik(Ingredient(nazwa, ilosc, cena, jednostka));
+		recipe.AddIngredient(Ingredient(nazwa, ilosc, cena, jednostka));
 
 	}
 
@@ -93,7 +93,7 @@ Recipe FileManager::WczytajPrzepis(std::string name)
 
 }
 
-void FileManager::ZapiszWszsytkiePrzepisy(std::vector<Recipe> recipeList)
+void FileManager::SaveAllRecipes(std::vector<Recipe> recipeList)
 {
 	std::ofstream plNazwy;
 	plNazwy.open("NazwyPrzepisow.txt");
@@ -109,13 +109,13 @@ void FileManager::ZapiszWszsytkiePrzepisy(std::vector<Recipe> recipeList)
 		if (i != recipeList.size() - 1)
 			plNazwy << std::endl;
 
-		ZapiszPrzepis(recipeList[i]);
+		SaveRecipe(recipeList[i]);
 	}
 
 	plNazwy.close();
 }
 
-void FileManager::ZapiszPrzepis(Recipe recipe)
+void FileManager::SaveRecipe(Recipe recipe)
 {
 	std::ofstream plo;
 	plo.open(recipe.GetNazwa() + ".txt");
@@ -144,7 +144,7 @@ void FileManager::ZapiszPrzepis(Recipe recipe)
 	plo.close();
 }
 
-std::vector<Ingredient> FileManager::WczytajElodowke()
+std::vector<Ingredient> FileManager::LoadElodowka()
 {
 	std::ifstream pli;
 	pli.open("skladnikiWlodowce.txt");
@@ -181,7 +181,7 @@ std::vector<Ingredient> FileManager::WczytajElodowke()
 	return ingredientList;
 }
 
-void FileManager::ZapiszElodowke(std::vector<Ingredient> ingredientList)
+void FileManager::SaveElodowka(std::vector<Ingredient> ingredientList)
 {
 	std::ofstream plo;
 	plo.open("skladnikiWlodowce.txt");

@@ -16,7 +16,7 @@ Recipe::~Recipe()
 {
 }
 
-void Recipe::DodajSkladnik(Ingredient ingredient)
+void Recipe::AddIngredient(Ingredient ingredient)
 {
 	ingriedientList.push_back(ingredient);
 }
@@ -39,7 +39,7 @@ void Recipe::DodajSkladnik(Ingredient ingredient)
 //	return (recipe1.GetName() < recipe2.GetName());
 //}
 
-void Recipe::DodajSkladnik(std::string _nazwa, float _ilosc, float _cena, std::string _jednostka)
+void Recipe::AddIngredient(std::string _nazwa, float _ilosc, float _cena, std::string _jednostka)
 {
 	ingriedientList.push_back(Ingredient(_nazwa, _ilosc, _cena, _jednostka));
 }

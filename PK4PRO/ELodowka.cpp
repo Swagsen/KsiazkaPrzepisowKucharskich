@@ -8,7 +8,7 @@ ELodowka::ELodowka()
 {
 	try 
 	{
-		ingriedientList = fileManager.WczytajElodowke();
+		ingriedientList = fileManager.LoadElodowka();
 	}
 	catch (NoFileI e)
 	{
@@ -88,7 +88,7 @@ void ELodowka::AddIngredient(Ingredient ingredient)
 	ingriedientList.push_back(ingredient);
 	try
 	{
-		fileManager.ZapiszElodowke(ingriedientList);
+		fileManager.SaveElodowka(ingriedientList);
 	}
 	catch (NoFileO e)
 	{
@@ -103,7 +103,7 @@ void ELodowka::DeleteIngredient(std::string name)
 	ingriedientList.erase(std::find_if(ingriedientList.begin(), ingriedientList.end(), [&name](Ingredient& ing) {return ing.GetNazwa() == name; }));
 	try
 	{
-		fileManager.ZapiszElodowke(ingriedientList);
+		fileManager.SaveElodowka(ingriedientList);
 	}
 	catch (NoFileO e)
 	{

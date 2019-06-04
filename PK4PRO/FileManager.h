@@ -9,14 +9,14 @@ public:
 	FileManager();
 	~FileManager();
 
-	std::vector<Recipe> WczytajWszsytkiePrzepisy();
-	Recipe WczytajPrzepis(std::string name);
+	std::vector<Recipe> LoadAllRecipes();
+	Recipe LoadRecipe(std::string name);
 
-	void ZapiszWszsytkiePrzepisy(std::vector<Recipe> recipeList);
-	void ZapiszPrzepis(Recipe recipe);
+	void SaveAllRecipes(std::vector<Recipe> recipeList);
+	void SaveRecipe(Recipe recipe);
 
-	std::vector<Ingredient> WczytajElodowke();
-	void ZapiszElodowke(std::vector<Ingredient> ingredientList);
+	std::vector<Ingredient> LoadElodowka();
+	void SaveElodowka(std::vector<Ingredient> ingredientList);
 
 };
 

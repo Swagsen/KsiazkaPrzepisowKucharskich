@@ -18,7 +18,7 @@ MenuManager::MenuManager()
 {
 	try
 	{
-		recipeManager.recipeList = fileManager.WczytajWszsytkiePrzepisy();
+		recipeManager.recipeList = fileManager.LoadAllRecipes();
 	}
 	catch (NoFileI e)
 	{
@@ -84,7 +84,7 @@ bool MenuManager::Update()
 		AddRecipe();
 		try
 		{
-			fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+			fileManager.SaveAllRecipes(recipeManager.recipeList);
 		}
 		catch (NoFileO e)
 		{
@@ -99,7 +99,7 @@ bool MenuManager::Update()
 		DeleteRecipe();
 		try
 		{
-			fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+			fileManager.SaveAllRecipes(recipeManager.recipeList);
 		}
 		catch (NoFileO e)
 		{
@@ -122,7 +122,7 @@ bool MenuManager::Update()
 	case wyjdz:
 		try
 		{
-			fileManager.ZapiszWszsytkiePrzepisy(recipeManager.recipeList);
+			fileManager.SaveAllRecipes(recipeManager.recipeList);
 		}
 		catch (NoFileO e)
 		{
@@ -407,7 +407,7 @@ void MenuManager::AddRecipe()
 		std::cout << "Podaj jednostke(kg/ml/szt/g): ";
 		while (!Validator::CheckUnit(tmp = input())) { std::cout << "zle :c, podaj jeszcze raz: "; } jednostka = tmp;
 
-		recipe.DodajSkladnik(Ingredient(nazwa, ilosc, cena, jednostka));
+		recipe.AddIngredient(Ingredient(nazwa, ilosc, cena, jednostka));
 	}
 
 	recipeManager.AddRecipe(recipe);

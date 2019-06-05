@@ -4,7 +4,6 @@
 std::string Iinput()
 {
 	std::string tmp;
-	//std::cin >> tmp;
 	std::getline(std::cin, tmp);
 	return tmp;
 }
@@ -25,15 +24,10 @@ void ELodowkaMenuManager::PrintMenu()
 	{
 		std::cout << i << " - " << StateToString[i] << std::endl;
 	}
-
 }
 
 void ELodowkaMenuManager::GetUserInput()
 {
-	//std::cin.sync();
-	//std::cin.clear();
-	//std::cin.ignore(INT_MAX, '\n');
-
 	std::string tmp;
 	while (!Validator::CheckMenuElodowkaChoice(tmp = Iinput()))
 	{
@@ -63,18 +57,15 @@ bool ELodowkaMenuManager::Update()
 	case dodajSkladnik:
 		system("cls");
 		AddIngrediente();
-		//fileManager.ZapiszElodowke(ingriedientList);
 		break;
 
 	case usunSkladnik:
 		system("cls");
 		DeleteIngredient();
-		//fileManager.ZapiszWszsytkiePrzepisy(ksiazkaPrzepisow);
 		break;
 
 
 	case wyjdz:
-		//fileManager.ZapiszWszsytkiePrzepisy(ksiazkaPrzepisow);
 		return false;
 		break;
 	}

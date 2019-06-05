@@ -39,7 +39,6 @@ bool Validator::CheckNumberF(std::string tmp)
 bool Validator::CheckUnit(std::string tmp)
 {
 	return std::regex_match(tmp, std::regex("([kK][Gg])|([mM][Ll])|([Ss][Zz][Tt])|([Gg])"));
-	//return std::regex_match(tmp, std::regex("[kK][Gg]"));
 }
 
 bool Validator::CheckMenuChoice(std::string tmp)

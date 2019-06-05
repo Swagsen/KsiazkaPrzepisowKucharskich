@@ -1,6 +1,4 @@
 #include "MenuManager.h"
-//#include"Recipe.h"
-//#include"Ingredient.h"
 #include<iostream>
 #include"MyException.h"
 #include"Validator.h"
@@ -9,7 +7,6 @@
 std::string input()
 {
 	std::string tmp;
-	//std::cin >> tmp;
 	std::getline(std::cin, tmp);
 	return tmp;
 }
@@ -39,20 +36,15 @@ void MenuManager::PrintMenu()
 	{
 		std::cout << i << " - " << StateToString[i] << std::endl;
 	}
-
 }
 
 void MenuManager::GetUserInput()
 {
-	//std::cin.sync();
-	//std::cin.clear();
-	//std::cin.ignore(INT_MAX, '\n');
-
 	std::string tmp;
-	while (!Validator::CheckMenuChoice(tmp = input())) 
-	{ 
-		std::cout << "zle :c, podaj jeszcze raz: "; 
-	} 
+	while (!Validator::CheckMenuChoice(tmp = input()))
+	{
+		std::cout << "zle :c, podaj jeszcze raz: ";
+	}
 	choice = std::stoi(tmp);
 }
 
@@ -114,10 +106,10 @@ bool MenuManager::Update()
 		SearchByCategory();
 		break;
 
-		case elodowka:
-			system("cls");
-			Elodowka_();
-			break;
+	case elodowka:
+		system("cls");
+		Elodowka_();
+		break;
 
 	case wyjdz:
 		try
@@ -152,7 +144,6 @@ void MenuManager::PrintAllRecipes()
 
 void MenuManager::SearchByName()
 {
-
 	std::string nazwa;
 
 	std::cout << "Podaj nazwe Przepisu: \n";
@@ -166,17 +157,6 @@ void MenuManager::SearchByName()
 	{
 		std::cout << e.what();
 	}
-
-
-
-	//try
-	//{
-	//	std::cout << *std::find_if(recipeManager.recipeList.begin(), recipeManager.recipeList.end(), [&nazwa](Recipe& rec) {return rec.GetName() == nazwa; });
-	//}
-	//catch (std::exception & e)
-	//{
-	//	std::cout << e.what();
-	//}
 
 	system("pause");
 }
@@ -210,10 +190,19 @@ void MenuManager::SearchByCategory()
 	if (tmpString != "brak")
 		for (auto it = tmp.begin(); it != tmp.end(); it++)
 		{
+			it = tmp.begin();
 			if (it->GetCzasPrzygotowania() > std::stof(tmpString))
 			{
-				it--;
-				tmp.erase(it + 1);
+				if (it != tmp.begin())
+				{
+					it--;
+					tmp.erase(it + 1);
+				}
+				else
+				{
+					tmp.erase(it);
+					it = tmp.begin();
+				}
 			}
 		}
 
@@ -225,7 +214,8 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetOcena() < std::stoi(tmpString))
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
@@ -238,7 +228,8 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetOcena() > std::stoi(tmpString))
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
@@ -251,7 +242,8 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetKoszt() < std::stof(tmpString))
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
@@ -265,7 +257,8 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetKoszt() > std::stof(tmpString))
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
@@ -278,7 +271,8 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetKategoria() != tmpString)
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
@@ -291,7 +285,8 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetTypDania() != tmpString)
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
@@ -304,32 +299,11 @@ void MenuManager::SearchByCategory()
 		{
 			if (it->GetKuchnia() != tmpString)
 			{
-				it--;
+				if (it != tmp.begin())
+					it--;
 				tmp.erase(it + 1);
 			}
 		}
-
-
-	//if (tmpString != "brak")
-	//for (auto it : tmp)
-	//{
-	//	if (it.GetCzasPrzygotowania > std::stof(tmpString))
-	//	{
-	//		tmp.erase(it);
-	//	}
-
-	//}
-
-	//if (tmpString != "brak")
-	//	for (auto it = tmp.begin(); it != tmp.end(); it++)
-	//	{
-	//		if (it->GetCzasPrzygotowania > std::stof(tmpString))
-	//		{
-	//			it--;
-	//			tmp.erase(it+1);
-	//		}
-	//	}
-
 
 	if (tmp.empty())
 	{
@@ -338,7 +312,7 @@ void MenuManager::SearchByCategory()
 	else
 	{
 		std::cout << "Oto pasujace przepisy:\n";
-		for (auto it : tmp) { std::cout << it.GetNazwa(); }
+		for (auto it : tmp) { std::cout << it.GetNazwa() << std::endl; }
 	}
 
 	system("pause");
@@ -362,14 +336,6 @@ void MenuManager::AddRecipe()
 
 
 	std::string tmp;
-
-	//std::cin.sync();
-	//std::cin.clear();
-	//std::cin.ignore(INT_MAX, '\n');
-
-
-	//while (!Validator::sprawszNazwe([&tmp](){std::string s; std::getline(std::cin, s); return s; })) { std::cout << "zle :c, podaj jeszcze raz: "; }
-
 
 	std::cout << "Podaj nazwe Przepisu: ";
 	while (!Validator::CheckName(tmp = input())) { std::cout << "zle :c, podaj jeszcze raz: "; } nazwa = tmp;
@@ -443,7 +409,7 @@ void MenuManager::Elodowka_()
 
 	while (eLodowkaManager->Update())
 	{
-	}	
+	}
 
 }
 

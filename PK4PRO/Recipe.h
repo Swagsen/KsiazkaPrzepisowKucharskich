@@ -29,18 +29,8 @@ public:
 
 	void AddIngredient(std::string _nazwa, float _ilosc, float _cena, std::string _jednostka);
 	void AddIngredient(Ingredient ingredient);
-	//void Wyswietl();
-	//bool operator==(Recipe& recipe);
-
-	//bool operator<(Recipe& const recipe)const
-	//{
-	//	return(this->nazwa < recipe.GetName());
-	//}
 
 	friend std::ostream& operator<<(std::ostream& stream, Recipe recipe);
-
-
-
 
 	std::string GetNazwa() { return  nazwa; };
 	float GetCzasPrzygotowania() { return czasPrzygotowania; }
@@ -53,6 +43,5 @@ public:
 	std::string GetOpis() { return opis; }
 	std::string GetSposobPrzygotowania() { return sposobPrzygotowania; }
 	std::vector<Ingredient> GetingriedientList() { return ingriedientList; };
-
 };
 

@@ -39,7 +39,7 @@ void ELodowka::Display()
 
 void ELodowka::SearchRecipes(std::vector<Recipe> recipeList)
 {
-	//if (recipeList.empty()) return;
+	if (recipeList.empty()) return;
 
 	bool gitgut = false;
 
@@ -51,19 +51,16 @@ void ELodowka::SearchRecipes(std::vector<Recipe> recipeList)
 			gitgut = false;
 			for (auto currentIngredientInFridge : ingriedientList)
 			{
-				//std::find_if(currentRecipe.GetingriedientList().begin(), currentRecipe.GetingriedientList().end(), [&currentIngredient](Ingredient& ing) {return currentIngredient >= ing; });
 				if (currentIngredientInFridge >= currentIngredient)
 				{
 					gitgut = true;
 					break;
 					
 				}
-				//else gitgut = false;
 			}
 
 			if (gitgut == false)
 				break;
-
 		}
 
 		if (gitgut)
@@ -113,9 +110,6 @@ void ELodowka::DeleteIngredient(std::string name)
 	}
 }
 
-void ELodowka::MakeRecipe(std::string name)
-{
-}
 
 
 

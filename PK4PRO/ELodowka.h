@@ -24,8 +24,5 @@ public:
 	void AddIngredient(Ingredient ingredient);
 
 	void DeleteIngredient(std::string name);
-
-	void MakeRecipe(std::string name);
-
 };
 

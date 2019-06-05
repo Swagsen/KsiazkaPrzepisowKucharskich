@@ -21,24 +21,6 @@ void Recipe::AddIngredient(Ingredient ingredient)
 	ingriedientList.push_back(ingredient);
 }
 
-//bool Recipe::operator==(Recipe & recipe)
-//{
-//
-//	return (this->nazwa == recipe.GetName());
-//}
-
-//bool Recipe::operator<(Recipe& const recipe)const
-//{
-//
-//	return (this->nazwa < recipe.GetName() );
-//}
-
-//bool operator<(Recipe& recipe1, Recipe& recipe2)
-//{
-//
-//	return (recipe1.GetName() < recipe2.GetName());
-//}
-
 void Recipe::AddIngredient(std::string _nazwa, float _ilosc, float _cena, std::string _jednostka)
 {
 	ingriedientList.push_back(Ingredient(_nazwa, _ilosc, _cena, _jednostka));

@@ -6,7 +6,6 @@ Ingredient::Ingredient(std::string _nazwa, float _ilosc, float _cena, std::strin
 {
 }
 
-
 Ingredient::~Ingredient()
 {
 }

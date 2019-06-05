@@ -2,8 +2,6 @@
 #include<fstream>
 #include"MyException.h"
 
-
-
 FileManager::FileManager()
 {
 }
@@ -35,7 +33,6 @@ std::vector<Recipe> FileManager::LoadAllRecipes()
 		tmp.push_back(LoadRecipe(nazwa));
 	}
 
-
 	plNazwy.close();
 	return tmp;
 }
@@ -62,7 +59,6 @@ Recipe FileManager::LoadRecipe(std::string name)
 	float cena;
 	std::string jednostka;
 
-
 	std::getline(plo, nazwa);
 	plo >> czasPrzygotowania;
 	plo >> ocena;
@@ -74,7 +70,6 @@ Recipe FileManager::LoadRecipe(std::string name)
 	std::getline(plo, opis);
 	std::getline(plo, opis);
 	std::getline(plo, sposobPrzygotowania);
-
 
 	Recipe recipe(nazwa, czasPrzygotowania, ocena, iloscSkladnikow, koszt, kategoria, typDania, kuchnia, opis, sposobPrzygotowania);
 
@@ -90,7 +85,6 @@ Recipe FileManager::LoadRecipe(std::string name)
 
 	plo.close();
 	return recipe;
-
 }
 
 void FileManager::SaveAllRecipes(std::vector<Recipe> recipeList)

@@ -3,7 +3,6 @@
 #include"MyException.h"
 #include<algorithm>
 
-
 RecipeManager::RecipeManager()
 {
 }
@@ -46,7 +45,6 @@ void RecipeManager::PrintAll()
 	for (auto it = recipeList.begin(); it != recipeList.end(); it++)
 	{
 		std::cout << *it;
-
 	}
 }
 

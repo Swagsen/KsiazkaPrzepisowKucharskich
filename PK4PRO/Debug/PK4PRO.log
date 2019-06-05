@@ -1,11 +1,5 @@
 ﻿  MenuManager.cpp
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\elodowkamenumanager.h(19): warning C4091: "static ": zignorowano na lewo od "ELodowkaMenuManager::State" podczas gdy brak deklaracji zmiennej
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.h(21): warning C4091: "static ": zignorowano na lewo od "MenuManager::State" podczas gdy brak deklaracji zmiennej
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\validator.h(18): warning C4091: "static ": zignorowano na lewo od "Validator" podczas gdy brak deklaracji zmiennej
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.cpp(172): warning C4101: "ocena": lokalna zmienna, do której nie istnieje odwołanie
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.cpp(177): warning C4101: "iloscSkladnikow": lokalna zmienna, do której nie istnieje odwołanie
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.cpp(171): warning C4101: "czasPrzygotowania": lokalna zmienna, do której nie istnieje odwołanie
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.cpp(180): warning C4101: "ilosc": lokalna zmienna, do której nie istnieje odwołanie
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.cpp(181): warning C4101: "cena": lokalna zmienna, do której nie istnieje odwołanie
-c:\users\mihau\documents\github\ksiazkaprzepisowkucharskich\pk4pro\menumanager.cpp(173): warning C4101: "koszt": lokalna zmienna, do której nie istnieje odwołanie
-  PK4PRO.vcxproj -> C:\Users\Mihau\Documents\GitHub\KsiazkaPrzepisowKucharskich\Debug\PK4PRO.exe
+c:\users\mihau\desktop\pk4pro\ksiazkaprzepisowkucharskich\pk4pro\elodowkamenumanager.h(19): warning C4091: "static ": zignorowano na lewo od "ELodowkaMenuManager::State" podczas gdy brak deklaracji zmiennej
+c:\users\mihau\desktop\pk4pro\ksiazkaprzepisowkucharskich\pk4pro\menumanager.h(21): warning C4091: "static ": zignorowano na lewo od "MenuManager::State" podczas gdy brak deklaracji zmiennej
+c:\users\mihau\desktop\pk4pro\ksiazkaprzepisowkucharskich\pk4pro\validator.h(18): warning C4091: "static ": zignorowano na lewo od "Validator" podczas gdy brak deklaracji zmiennej
+  PK4PRO.vcxproj -> C:\Users\Mihau\Desktop\PK4PRO\KsiazkaPrzepisowKucharskich\Debug\PK4PRO.exe

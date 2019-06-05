@@ -164,154 +164,65 @@ void MenuManager::SearchByName()
 void MenuManager::SearchByCategory()
 {
 	std::vector<Recipe> tmp = recipeManager.recipeList;
-
-
 	std::string tmpString;
 
-	float czasPrzygotowania;
-	int ocena;
-	float koszt;
-	std::string kategoria;
-	std::string typDania;
-	std::string kuchnia;
-	int iloscSkladnikow;
-	std::string opis;
-	std::string sposobPrzygotowania;
-	float ilosc;
-	float cena;
-	std::string jednostka;
-
 	std::cout << "napisz brak jesli jakies kryterium cie nieinteresuje\n";
-
 
 	std::cout << "Podaj max czas Przygotowania: ";
 	while (!Validator::CheckNumberF(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			it = tmp.begin();
-			if (it->GetCzasPrzygotowania() > std::stof(tmpString))
-			{
-				if (it != tmp.begin())
-				{
-					it--;
-					tmp.erase(it + 1);
-				}
-				else
-				{
-					tmp.erase(it);
-					it = tmp.begin();
-				}
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetCzasPrzygotowania() > std::stof(tmpString); }), tmp.end());
 
 	std::cout << "Podaj min ocena: ";
 	while (!Validator::CheckRating(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetOcena() < std::stoi(tmpString))
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetOcena() < std::stoi(tmpString); }), tmp.end());
 
 	std::cout << "Podaj max ocena: ";
 	while (!Validator::CheckRating(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetOcena() > std::stoi(tmpString))
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetOcena() > std::stoi(tmpString); }), tmp.end());
 
 	std::cout << "Podaj min koszt: ";
 	while (!Validator::CheckNumberF(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetKoszt() < std::stof(tmpString))
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
-
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetKoszt() < std::stof(tmpString); }), tmp.end());
 
 	std::cout << "Podaj max koszt: ";
 	while (!Validator::CheckNumberF(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetKoszt() > std::stof(tmpString))
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetKoszt() > std::stof(tmpString); }), tmp.end());
 
 	std::cout << "Podaj kategoria: ";
 	while (!Validator::CheckWord(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetKategoria() != tmpString)
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetKategoria() != tmpString; }), tmp.end());
 
 	std::cout << "Podaj typ dania: ";
 	while (!Validator::CheckWord(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetTypDania() != tmpString)
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetTypDania() != tmpString; }), tmp.end());
 
 	std::cout << "Podaj Kuchnie: ";
 	while (!Validator::CheckWord(tmpString = input()) && !Validator::CheckBrak(tmpString)) { std::cout << "zle :c, podaj jeszcze raz: "; }
 
 	if (tmpString != "brak")
-		for (auto it = tmp.begin(); it != tmp.end(); it++)
-		{
-			if (it->GetKuchnia() != tmpString)
-			{
-				if (it != tmp.begin())
-					it--;
-				tmp.erase(it + 1);
-			}
-		}
+		tmp.erase(std::remove_if(tmp.begin(), tmp.end(), [tmpString](Recipe recipe) {return recipe.GetKuchnia() != tmpString; }), tmp.end());
 
 	if (tmp.empty())
 	{
-		std::cout << " brak przepisow o spelniajacych kryteriach\n";
+		std::cout << "\nbrak przepisow o spelniajacych kryteriach\n";
 	}
 	else
 	{
-		std::cout << "Oto pasujace przepisy:\n";
+		std::cout << "\nOto pasujace przepisy:\n";
 		for (auto it : tmp) { std::cout << it.GetNazwa() << std::endl; }
 	}
 
@@ -407,10 +318,7 @@ void MenuManager::Elodowka_()
 {
 	eLodowkaManager = new ELodowkaMenuManager(recipeManager.recipeList);
 
-	while (eLodowkaManager->Update())
-	{
-	}
-
+	while (eLodowkaManager->Update()){}
 }
 
 std::string MenuManager::StateToString[] =
